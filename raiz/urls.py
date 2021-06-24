@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
+from django.urls.conf import include
+from blog import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('', views.home),
+    path('post/<int:post_id>/', views.post)
+]+ static(settings.MEDIA_URL, documet_root=settings.MEDIA_ROOT)

@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h3 class="pb-4 mb-4 fst-italic border-bottom">
+    {{ post.title }}
+</h3>
+
+<article class="blog-post">
+    <h2 class="blog-post-title">{{ post.title }}</h2>
+    <p class="blog-post-meta">{{ post.date_create }}<a href="/post{{ post.id }}"> {{ post.author }}</a></p>
+    {{ post.content|safe }}
+</article>
+{% endblock %}
